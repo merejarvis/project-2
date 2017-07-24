@@ -51,9 +51,18 @@ app.get('/', function (req, res) {
 })
 
 app.get('/profile', function (req, res) {
-  res.send({
-    'currently logged in user': req.user
+  // res.send({
+  //   'currently logged in user': req.user
+  // })
+
+  res.render('profile', {
+    user: req.user
   })
+})
+
+app.get('/logout', function (req, res) {
+  req.logout()
+  res.redirect('/')
 })
 
 // all the routes variables

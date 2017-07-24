@@ -11,6 +11,15 @@
   <body>
     <div class="container">
       <h1>Authentication</h1>
+
+      {{#if user}}
+        <ul>
+          <li>
+            <a href="/logout">Logout</a>
+          </li>
+        </ul>
+      {{/if}}
+
       {{{ body }}}
     </div>
 

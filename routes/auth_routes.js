@@ -23,6 +23,17 @@ router.post('/login',
    failureRedirect: '/register'
  }))
 
+router.get('/fblogin', passport.authenticate('facebook'))
+router.get('/fbcallback',
+  passport.authenticate('facebook',
+    { failureRedirect: '/register' }
+  ),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.send(req.user)
+  }
+)
+
 router.post('/register', authController.register)
 
 module.exports = router
