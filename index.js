@@ -6,13 +6,13 @@ var mongoose = require('mongoose')
 var app = express()
 
 if (process.env.NODE_ENV === 'test') {
-  mongoose.connect('mongodb://localhost/express-authentication')
-} else {
   mongoose.connect('mongodb://localhost/express-authentication-test')
+} else {
+  mongoose.connect('mongodb://localhost/express-authentication')
 }
 
 app.use(require('morgan')('dev'))
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // change this to express-handlebars
 // app.set('view engine', 'ejs')
