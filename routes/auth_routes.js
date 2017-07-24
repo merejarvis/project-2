@@ -1,8 +1,9 @@
 var express = require('express')
 var router = express.Router()
 
-router.get('/signup', function (req, res) {
-  res.render('auth/signup')
+// path name
+router.get('/register', function (req, res) {
+  res.render('auth/signup') // view name
 })
 
 router.get('/login', function (req, res) {
