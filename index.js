@@ -11,6 +11,10 @@ if (process.env.NODE_ENV === 'test') {
   mongoose.connect('mongodb://localhost/express-authentication')
 }
 
+// initialize passport
+const passport = require('./config/passport')
+app.use(passport.initialize())
+
 app.use(require('morgan')('dev'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
