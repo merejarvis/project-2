@@ -15,7 +15,13 @@ router.get('/login', function (req, res) {
   res.render('auth/login')
 })
 
-router.post('/login', authController.login)
+// passport.authenticate(<name of the strategy>, <post auth configuration, an obj>)
+
+router.post('/login',
+ passport.authenticate('local', {
+   successRedirect: '/profile',
+   failureRedirect: '/register'
+ }))
 
 router.post('/register', authController.register)
 

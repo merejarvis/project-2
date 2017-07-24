@@ -1,8 +1,12 @@
 var express = require('express')
 // var ejsLayouts = require('express-ejs-layouts')
 const exphbs = require('express-handlebars')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
+
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
+
 var app = express()
 
 if (process.env.NODE_ENV === 'test') {
@@ -11,9 +15,21 @@ if (process.env.NODE_ENV === 'test') {
   mongoose.connect('mongodb://localhost/express-authentication')
 }
 
+// setup express session
+app.use(session({
+  store: new MongoStore({
+    url: 'mongodb://localhost/express-authentication'
+  }),
+  secret: 'foo',
+  resave: false,
+  saveUninitialized: true
+}))
+
 // initialize passport
 const passport = require('./config/passport')
 app.use(passport.initialize())
+// the line below must be AFTER the session setup
+app.use(passport.session())
 
 app.use(require('morgan')('dev'))
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -27,11 +43,17 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars')
 
 app.get('/', function (req, res) {
+  if (req.user) {
+    return res.send('hide login link')
+  }
+
   res.render('index')
 })
 
 app.get('/profile', function (req, res) {
-  res.render('profile')
+  res.send({
+    'currently logged in user': req.user
+  })
 })
 
 // all the routes variables
