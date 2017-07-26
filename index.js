@@ -6,6 +6,7 @@ const MongoStore = require('connect-mongo')(session)
 
 const Question = require('./models/Question')
 
+
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 
@@ -49,18 +50,35 @@ app.engine('handlebars', exphbs({
 }))
 app.set('view engine', 'handlebars')
 
-app.get('/', function (req, res) {
-  Question
-  .find({}, function(err, allQn){
-    if (err) return res.send(err)
-  res.render('home', {
-    user: req.user,
-    allQn: allQn
-  })
-})
-})
+// app.get('/', function (req, res) {
+//   Question
+//   .find({}, function(err, allQn){
+//     if (err) return res.send(err)
+//   res.render('home', {
+//     user: req.user,
+//     allQn: allQn
+//   })
+// })
+// })
+
+
+const qnRoutes = require('./routes/qn_routes')
+app.use('/', qnRoutes)
+
+// app.get('/', function (req, res) {
+// Question
+//   .find({})
+//   .populate('user')
+//   .exec(function (err, allQn) {
+//     if (err) res.send(err)
+//     res.render('home', {
+//       allQn: allQn
+//     })
+//   })
+// })
 
 app.get('/profile', function (req, res) {
+  User.findOne
   res.render('profile', {
     user: req.user
   })
