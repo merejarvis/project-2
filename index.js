@@ -65,6 +65,9 @@ app.set('view engine', 'handlebars')
 const qnRoutes = require('./routes/qn_routes')
 app.use('/', qnRoutes)
 
+const ansRoutes = require('./routes/ans_routes')
+app.use('/answer', ansRoutes)
+
 // app.get('/', function (req, res) {
 // Question
 //   .find({})
@@ -78,7 +81,6 @@ app.use('/', qnRoutes)
 // })
 
 app.get('/profile', function (req, res) {
-  User.findOne
   res.render('profile', {
     user: req.user
   })
@@ -91,9 +93,10 @@ app.get('/logout', function (req, res) {
 
 // all the routes variables
 const authRoutes = require('./routes/auth_routes')
-
 // app.use('/auth', require('./controllers/auth'))
 app.use('/', authRoutes)
+
+
 
 const port = process.env.PORT || 3000
 var server = app.listen(port, function () {

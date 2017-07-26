@@ -16,20 +16,24 @@
 
 </form>
 
-  <h2>Feeds</h2>
+  <h2>Questions Feed</h2>
   <ul>
     {{#each allQn as |Qn|}}
       <li>
-        {{!-- {{Qn}} --}}
-      <p>posted by: {{Qn.user.name}}<p>
-      <h4>Qn: {{Qn.question}}<br></h4>
+
+
+      <h4>{{Qn.question}}<br></h4>
         <form class="" action="index.html" method="post">
           <label>
-            <input id = "list" type="text" name="Answer" value="">
-            <button>Answer</button>
+            {{Qn}}
+            <h6>{{Qn.date}}</h6>
+             <h6>By: {{Qn.user.name}}</h6>
+            <h6>Total Answers: {{Qn.answer.length}}</h6>
+            <a href="/answer/{{Qn._id}}">Answer</a>
           </label>
         </form>
         <br>
+
         </li>
 
     {{/each}}

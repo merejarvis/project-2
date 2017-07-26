@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/logout">Logout</a>
+    <a href="/profile">Profile</a>
+      <a href="/">Back to Feeds</a>
+
+    <h2>Hello Grandmaster {{user.name}}!</h2>
+    {{{theQn}}}
+  <h3>Question: {{{theQn.question}}}</h3>
+
+  <form action="/answer" method="POST">
+    <div class="form-group">
+      <h4>Your answer here:</h4>
+      <label><input id={{{theQn}}} class="form-control" type="text" name="answer"></label>
+
+      <button>Submit</button>
+    </div>
+  </form>
+  </body>
+</html>

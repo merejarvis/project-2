@@ -8,7 +8,7 @@ app.use(bodyParser.json())
 
 
 const authController = require('../controllers/auth_controllers')
-const qnController = require('../controllers/qn_controllers')
+// const qnController = require('../controllers/qn_controllers')
 
 const passport =
 require('../config/passport')
@@ -61,6 +61,6 @@ router.post('/register', authController.register)
 // router.post('/', function(req, res){
 //   res.send(req.session.passport.user)
 // })
-router.post('/', qnController.postQn)
+// router.post('/', qnController.postQn)
 
 module.exports = router
