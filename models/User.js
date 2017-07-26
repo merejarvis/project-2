@@ -6,6 +6,7 @@ const Answer = require('./Answer')
 const bcrypt = require('bcrypt')
 
 const userSchema = new Schema({
+  fbId: String,
   name: String,
   email: String,
   password: String,

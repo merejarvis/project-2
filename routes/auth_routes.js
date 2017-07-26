@@ -46,16 +46,16 @@ router.post('/login',
 
 
 
-// router.get('/fblogin', passport.authenticate('facebook'))
-// router.get('/fbcallback',
-//   passport.authenticate('facebook',
-//     { failureRedirect: '/register' }
-//   ),
-//   function (req, res) {
-//     // Successful authentication, redirect home.
-//     res.send(req.user)
-//   }
-// )
+router.get('/fblogin', passport.authenticate('facebook'))
+router.get('/fbcallback',
+  passport.authenticate('facebook',
+    { failureRedirect: '/register' }
+  ),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/')
+  }
+)
 
 router.post('/register', authController.register)
 // router.post('/', function(req, res){

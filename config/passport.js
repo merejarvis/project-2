@@ -1,6 +1,6 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
-// const FacebookStrategy = require('passport-facebook').Strategy
+const FacebookStrategy = require('passport-facebook').Strategy
 
 const User = require('../models/User')
 
@@ -18,27 +18,27 @@ passport.deserializeUser(function (id, next) {
 })
 
 // fb strategy
-// passport.use(
-//   new FacebookStrategy(
-//     {
-//       clientID: '328728194219880',
-//       clientSecret: 'd4b9a60e304caff4d2ae155368128a73',
-//       callbackURL: 'http://localhost:3000/fbcallback'
-//     },
-//     fbVerify
-//   )
-// )
-//
-// function fbVerify (accessToken, refreshToken, profile, next) {
-//   var newUser = new User({
-//     name: profile.displayName,
-//     fbid: profile.id
-//   })
-//
-//   newUser.save(function (err, fbUser) {
-//     return next(err, fbUser)
-//   })
-// }
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: '159758891260669',
+      clientSecret: 'aefff1a24cfb7d7721c30ebdf883a55e',
+      callbackURL: 'http://localhost:3000/fbcallback'
+    },
+    fbVerify
+  )
+)
+
+function fbVerify (accessToken, refreshToken, profile, next) {
+  var newUser = new User({
+    name: profile.displayName,
+    fbid: profile.id
+  })
+
+  newUser.save(function (err, fbUser) {
+    return next(err, fbUser)
+  })
+}
 
 // local strategy
 passport.use(
