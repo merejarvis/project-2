@@ -1,0 +1,9 @@
+#list{
+  width:100%;
+}
+
+ul{
+  list-style: none;
+  display: inline-block;
+  margin: 0 auto;
+}

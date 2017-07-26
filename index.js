@@ -4,34 +4,41 @@ const exphbs = require('express-handlebars')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 
+const Question = require('./models/Question')
+
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 
 var app = express()
 
-if (process.env.NODE_ENV === 'test') {
-  mongoose.connect('mongodb://localhost/express-authentication-test')
-} else {
-  mongoose.connect('mongodb://localhost/express-authentication')
-}
+mongoose.connect('mongodb://localhost/project-2')
+
+// if (process.env.NODE_ENV === 'test') {
+//   mongoose.connect('mongodb://localhost/express-authentication-test')
+// } else {
+//   mongoose.connect('mongodb://localhost/express-authentication')
+// }
 
 // setup express session
 app.use(session({
   store: new MongoStore({
-    url: 'mongodb://localhost/express-authentication'
+    url: 'mongodb://localhost/project-2'
   }),
   secret: 'foo',
   resave: false,
   saveUninitialized: true
 }))
 
+
+
 // initialize passport
 const passport = require('./config/passport')
 app.use(passport.initialize())
 // the line below must be AFTER the session setup
 app.use(passport.session())
-
+app.use(express.static('public'))
 app.use(require('morgan')('dev'))
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // change this to express-handlebars
@@ -43,18 +50,17 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars')
 
 app.get('/', function (req, res) {
-  if (req.user) {
-    return res.send('hide login link')
-  }
-
-  res.render('index')
+  Question
+  .find({}, function(err, allQn){
+    if (err) return res.send(err)
+  res.render('home', {
+    user: req.user,
+    allQn: allQn
+  })
+})
 })
 
 app.get('/profile', function (req, res) {
-  // res.send({
-  //   'currently logged in user': req.user
-  // })
-
   res.render('profile', {
     user: req.user
   })

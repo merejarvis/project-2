@@ -1,0 +1,50 @@
+
+{{#if user}}
+<a href="/logout">Logout</a>
+<a href="/profile">Profile</a>
+<h2>hellaaaa {{{user.name}}}</h2>
+
+<br>
+<form action="/" method="POST">
+  <div class="form-group">
+    <label for="questionBank">What is your question?</label>
+    <input id="questionBank" class="form-control" type="text" name="question">
+    <button>Submit</button>
+  </div>
+
+
+
+</form>
+
+  <h2>Feeds</h2>
+  <ul>
+    {{#each allQn as |Qn|}}
+      <li>
+        <form class="" action="index.html" method="post">
+          <label>
+            {{Qn.question}}<br>
+            <input id = "list" type="text" name="Answer" value="">
+            <button>Answer</button>
+          </label>
+        </form>
+        <br>
+        </li>
+
+    {{/each}}
+  </ul>
+
+
+{{/if}}
+
+{{#unless user}}
+<h2>Welcome!</h2>
+<a href="/register">Signup</a>
+<a index ='login' href="/login">Login</a>
+{{/unless}}
+
+
+
+{{!-- <a href="/register">Signup</a>
+<a index ='login' href="/login">Login</a>
+<a href="/logout">Logout</a>
+<a href="/profile">Profile</a> --}}

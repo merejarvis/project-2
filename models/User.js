@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const Question = require('./Question')
+const Answer = require('./Answer')
 
 const bcrypt = require('bcrypt')
 
@@ -7,7 +9,16 @@ const userSchema = new Schema({
   name: String,
   email: String,
   password: String,
-  fbid: String
+  about: String,
+  question: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Question'
+  }],
+  answer: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Answer'
+  }]
+
 })
 
 userSchema.pre('save', function (next) {
