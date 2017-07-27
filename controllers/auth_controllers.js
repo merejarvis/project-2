@@ -12,7 +12,7 @@ function register (req, res) {
     if (err) {
       return res.send(err)
     }
-    res.redirect('/profile') // ~~ client req GET /profile
+    res.redirect('/login') // ~~ client req GET /profile
   })
 }
 
