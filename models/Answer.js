@@ -5,7 +5,6 @@ const Question = require('./Question')
 
 const mongodbUrl = 'mongodb://localhost:27017/project-2'
 
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mydbname')
 
 mongoose.Promise = global.Promise
 mongoose.connect(process.env.MONGODB_URI || mongodbUrl, {
@@ -27,7 +26,7 @@ const answerSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   }
-  // fbid: String
+
 })
 
 

@@ -1,9 +1,6 @@
 const passport = require('passport')
-
 const LocalStrategy = require('passport-local').Strategy
-// const GoogleStrategy = require('passport-google-oauth2').Strategy
 const FacebookStrategy = require('passport-facebook').Strategy
-
 const User = require('../models/User')
 
 // it will store into the session, currently logged in user
@@ -19,18 +16,6 @@ passport.deserializeUser(function (id, next) {
   })
 })
 
-// passport.use(new GoogleStrategy({
-//     clientID:33577841680-5h9726vfm3udd4217h742rj6g4bq1hmq.apps.googleusercontent.com,
-//     clientSecret: 9-EesLNcgmdhO6K0WydLYOVr,
-//     callbackURL: "http://yourdormain:3000/auth/google/callback",
-//     passReqToCallback   : true
-//   },
-//   function(request, accessToken, refreshToken, profile, done) {
-//     User.findOrCreate({ googleId: profile.id }, function (err, user) {
-//       return done(err, user);
-//     });
-//   }
-// ));
 
 // fb strategy
 passport.use(

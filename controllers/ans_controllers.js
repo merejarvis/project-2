@@ -3,11 +3,6 @@ const Answer = require('../models/Answer')
 const User = require('../models/User')
 
 function showQn (req, res) {
-  // Question
-  // .findOne({
-  //   _id: req.params.id
-  // }, function (err, theQn) {
-  //   if (err) res.send(err)
 
     Question
     .findOne({_id: req.params.id})
@@ -22,21 +17,6 @@ function showQn (req, res) {
     })
     })
     }
-
-
-
-
-    // Group
-    //   .find({})
-    //   .populate({path: 'Members', options: { sort: { 'created_at': -1 } } })
-
-
-  //   res.render('ans/answer', {
-  //     theQn: theQn,
-  //     user: req.user})
-  //   })
-  //
-  // }
 
   function postAns (req, res) {
     // res.send(req.body)
@@ -66,10 +46,6 @@ function showQn (req, res) {
         theQn.save()
         // res.send(theQn)
       })
-//
-//
-//
-
 
       res.redirect(`/answer/${req.body.qnRef}`)
     // ~~ client req GET /profile

@@ -14,12 +14,6 @@ var app = express()
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/project-2')
 
-// if (process.env.NODE_ENV === 'test') {
-//   mongoose.connect('mongodb://localhost/express-authentication-test')
-// } else {
-//   mongoose.connect('mongodb://localhost/express-authentication')
-// }
-
 // setup express session
 app.use(session({
   store: new MongoStore({
@@ -50,16 +44,6 @@ app.engine('handlebars', exphbs({
 }))
 app.set('view engine', 'handlebars')
 
-// app.get('/', function (req, res) {
-//   Question
-//   .find({}, function(err, allQn){
-//     if (err) return res.send(err)
-//   res.render('home', {
-//     user: req.user,
-//     allQn: allQn
-//   })
-// })
-// })
 
 const authRoutes = require('./routes/auth_routes')
 app.use('/', authRoutes)
@@ -70,17 +54,6 @@ app.use('/', qnRoutes)
 const ansRoutes = require('./routes/ans_routes')
 app.use('/answer', ansRoutes)
 
-// app.get('/', function (req, res) {
-// Question
-//   .find({})
-//   .populate('user')
-//   .exec(function (err, allQn) {
-//     if (err) res.send(err)
-//     res.render('home', {
-//       allQn: allQn
-//     })
-//   })
-// })
 
 app.get('/profile', function (req, res) {
   res.render('profile', {
@@ -92,10 +65,6 @@ app.get('/logout', function (req, res) {
   req.logout()
   res.redirect('/')
 })
-
-// all the routes variables
-
-
 
 
 const port = process.env.PORT || 3000

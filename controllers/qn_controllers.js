@@ -18,18 +18,6 @@ function postQn (req, res) {
   })
 }
 
-// function showQn (req, res) {
-// Question
-// .find({})
-// .populate('user')
-// .exec(function (err, allQn) {
-//   if (err) res.send(err)
-// res.render('home', {
-//   allQn: allQn,
-//   user: req.user
-// })
-// })
-// }
 
 function showQn (req, res) {
 Question
@@ -48,5 +36,4 @@ res.render('home', {
 module.exports = {
   postQn,
   showQn
-// login
 }

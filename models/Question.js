@@ -18,10 +18,6 @@ mongoose.connect(process.env.MONGODB_URI || mongodbUrl, {
 const questionSchema = new Schema({
   question: String,
   date: {type: Date, default: Date.now},
-  // answer: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Answer'
-  // }],
   answer: [{type: Schema.Types.ObjectId,
     ref: 'Answer'
   }],
@@ -29,7 +25,6 @@ const questionSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   }
-  // fbid: String
 })
 
 
