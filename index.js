@@ -61,6 +61,8 @@ app.set('view engine', 'handlebars')
 // })
 // })
 
+const authRoutes = require('./routes/auth_routes')
+app.use('/', authRoutes)
 
 const qnRoutes = require('./routes/qn_routes')
 app.use('/', qnRoutes)
@@ -92,9 +94,7 @@ app.get('/logout', function (req, res) {
 })
 
 // all the routes variables
-const authRoutes = require('./routes/auth_routes')
-// app.use('/auth', require('./controllers/auth'))
-app.use('/', authRoutes)
+
 
 
 

@@ -18,8 +18,11 @@ mongoose.connect(mongodbUrl, {
 const questionSchema = new Schema({
   question: String,
   date: {type: Date, default: Date.now},
-  answer: [{
-    type: Schema.Types.ObjectId,
+  // answer: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Answer'
+  // }],
+  answer: [{type: Schema.Types.ObjectId,
     ref: 'Answer'
   }],
   user: {

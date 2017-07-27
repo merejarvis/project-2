@@ -9,17 +9,48 @@
     <a href="/profile">Profile</a>
       <a href="/">Back to Feeds</a>
 
-    <h2>Hello Grandmaster {{user.name}}!</h2>
-    {{{theQn}}}
-  <h3>Question: {{{theQn.question}}}</h3>
+    <h2>Hello {{user.name}}!</h2>
+  <h3>Question: {{{reqQn.question}}}</h3>
 
   <form action="/answer" method="POST">
     <div class="form-group">
-      <h4>Your answer here:</h4>
-      <label><input id={{{theQn}}} class="form-control" type="text" name="answer"></label>
+      <label for="Bank">What is your answer?</label>
+      <input id="questionBank" class="form-control" type="text" name="answer">
 
-      <button>Submit</button>
     </div>
+    <div class="form-group">
+      {{!-- <label for="question"></label> --}}
+      <input id="question" class="form-control" type="hidden" name="qnRef" value={{reqQn.id}}>
+    </div>
+    <button>Submit</button>
+
   </form>
+
+  <h2>All Answers</h2>
+<ul>
+
+
+  {{#each reqQn.answer as |Ans|}}
+    <li>
+
+
+    <h4>{{Ans.answer}}<br></h4>
+
+<h6>{{Ans.date}}</h6>
+<h6>By: {{Ans.user.name}}</h6>
+
+
+          {{!-- {{Qn}} --}}
+          {{!-- <h6>{{Qn.date}}</h6>
+           <h6>By: {{Qn.user.name}}</h6>
+          <h6>Total Answers: {{Qn.answer.length}}</h6> --}}
+
+
+
+      </li>
+
+  {{/each}}
+  </ul>
+
   </body>
 </html>
