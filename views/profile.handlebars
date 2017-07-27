@@ -2,12 +2,12 @@
 
 <a href="/logout">Logout</a>
 <a href="/">Back to Feeds</a>
-<h2></h2>
+{{!-- <h2>{{{user}}}</h2> --}}
 
 
 <h2>About {{{user.name}}}: </h2>
 <h3> {{{user.about}}}</h3>
 
 <p>Stats:</p>
-<p>XX Questions Posted</p>
-<p>XX Answers Posted</p>
+<p>{{{user.question.length}}} Questions Posted</p>
+<p>{{{user.answer.length}}} Answers Posted</p>
