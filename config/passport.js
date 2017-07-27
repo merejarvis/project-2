@@ -1,6 +1,8 @@
 const passport = require('passport')
+
 const LocalStrategy = require('passport-local').Strategy
-// const FacebookStrategy = require('passport-facebook').Strategy
+// const GoogleStrategy = require('passport-google-oauth2').Strategy
+const FacebookStrategy = require('passport-facebook').Strategy
 
 const User = require('../models/User')
 
@@ -17,28 +19,54 @@ passport.deserializeUser(function (id, next) {
   })
 })
 
+// passport.use(new GoogleStrategy({
+//     clientID:33577841680-5h9726vfm3udd4217h742rj6g4bq1hmq.apps.googleusercontent.com,
+//     clientSecret: 9-EesLNcgmdhO6K0WydLYOVr,
+//     callbackURL: "http://yourdormain:3000/auth/google/callback",
+//     passReqToCallback   : true
+//   },
+//   function(request, accessToken, refreshToken, profile, done) {
+//     User.findOrCreate({ googleId: profile.id }, function (err, user) {
+//       return done(err, user);
+//     });
+//   }
+// ));
+
 // fb strategy
-// passport.use(
-//   new FacebookStrategy(
-//     {
-//       clientID: '159758891260669',
-//       clientSecret: 'aefff1a24cfb7d7721c30ebdf883a55e',
-//       callbackURL: 'http://localhost:3000/fbcallback'
-//     },
-//     fbVerify
-//   )
-// )
-//
-// function fbVerify (accessToken, refreshToken, profile, next) {
-//   var newUser = new User({
-//     name: profile.displayName,
-//     fbid: profile.id
-//   })
-//
-//   newUser.save(function (err, fbUser) {
-//     return next(err, fbUser)
-//   })
-// }
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: '159758891260669',
+      clientSecret: 'aefff1a24cfb7d7721c30ebdf883a55e',
+      callbackURL: 'https://cryptic-depths-63828.herokuapp.com/fbcallback',
+      profileFields: ['id', 'emails', 'name']
+    },
+    fbVerify
+  )
+)
+
+function fbVerify (accessToken, refreshToken, profile, next) {
+User.findOne({fbId: profile.id}, function (err, user){
+if (err) return res.send(err);
+
+if(user){
+console.log(user);
+return next(null, user)
+}
+else{
+  var newUser = new User({
+    name: profile.name.givenName + ' ' + profile.name.familyName ,
+    fbId: profile.id,
+    email: profile.emails[0].value
+  })
+  // console.log(profile);
+
+  newUser.save(function (err, fbUser) {
+    return next(err, fbUser)
+  })
+}
+})
+}
 
 // local strategy
 passport.use(

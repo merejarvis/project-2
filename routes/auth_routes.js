@@ -46,16 +46,14 @@ router.post('/login',
 
 
 
-router.get('/fblogin', passport.authenticate('facebook'))
+router.get('/fblogin', passport.authenticate('facebook', { scope : ['email']}))
+
 router.get('/fbcallback',
   passport.authenticate('facebook',
-    { failureRedirect: '/register' }
-  ),
-  function (req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/')
-  }
-)
+    { successRedirect: '/',
+    failureRedirect: '/register' }
+  ))
+
 
 router.post('/register', authController.register)
 // router.post('/', function(req, res){
