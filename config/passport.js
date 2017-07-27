@@ -35,8 +35,8 @@ passport.deserializeUser(function (id, next) {
 // fb strategy
 passport.use(
   new FacebookStrategy(
-    { //1. Change url
-      //2. Change Facebook credentials here
+     { //1. Change url, change app url on fb developer
+      //2. Change Facebook credentials
       clientID: '207018116498336',
       clientSecret: '50f169d907c357429ec1244d5580deb1',
       callbackURL: 'https://cryptic-depths-63828.herokuapp.com/fbcallback',
