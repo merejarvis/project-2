@@ -12,7 +12,7 @@ var mongoose = require('mongoose')
 
 var app = express()
 
-mongoose.connect('mongodb://localhost/project-2')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/project-2')
 
 // if (process.env.NODE_ENV === 'test') {
 //   mongoose.connect('mongodb://localhost/express-authentication-test')
@@ -23,7 +23,7 @@ mongoose.connect('mongodb://localhost/project-2')
 // setup express session
 app.use(session({
   store: new MongoStore({
-    url: 'mongodb://localhost/project-2'
+    url: process.env.MONGODB_URI || 'mongodb://localhost/project-2'
   }),
   secret: 'foo',
   resave: false,
