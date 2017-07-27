@@ -36,8 +36,8 @@ passport.deserializeUser(function (id, next) {
 passport.use(
   new FacebookStrategy(
     {
-      clientID: '159758891260669',
-      clientSecret: 'aefff1a24cfb7d7721c30ebdf883a55e',
+      clientID: '207018116498336',
+      clientSecret: '50f169d907c357429ec1244d5580deb1',
       callbackURL: 'https://qna-123.herokuapp.com/fbcallback',
       profileFields: ['id', 'emails', 'name']
     },
