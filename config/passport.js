@@ -38,7 +38,7 @@ passport.use(
     {
       clientID: '159758891260669',
       clientSecret: 'aefff1a24cfb7d7721c30ebdf883a55e',
-      callbackURL: 'https://cryptic-depths-63828.herokuapp.com/fbcallback',
+      callbackURL: 'https://qna-123.herokuapp.com/fbcallback',
       profileFields: ['id', 'emails', 'name']
     },
     fbVerify
