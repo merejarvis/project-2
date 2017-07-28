@@ -41,6 +41,8 @@ The above was conceptualized during the planning stage. As of now, users can:
 
 * Yarn package manager
 
+* Milligram CSS
+
 
 
 ### Acknowledgements
