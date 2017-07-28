@@ -11,6 +11,9 @@ My **second** project at General Assembly's Web Development Immersive (WDI) Cour
 
 * **Inspiration**: *Quora*, *Padlet*
 
+## ERD
+![ERD](ERD.jpg)
+
 
 ## User stories: Dream vs Reality
 ![userStories](userStories.jpg)
@@ -36,8 +39,7 @@ Unfortunately...
 
 
 
-## ERD
-![ERD](ERD.jpg)
+
 
 ### Built With
 
