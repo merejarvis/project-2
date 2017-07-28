@@ -23,6 +23,15 @@ The above was conceptualized during the planning stage. As of now, users can:
 
 * View simple user stats
 
+## Additional features I would have liked to have done for this project
+
+* User to be able to manage ie. view, update, delete their questions and answers on their profile page
+
+* 'Like' and 'follow' buttons on the questions to generate top or followed qns for specific users
+
+
+
+
 
 ## ERD
 ![ERD](ERD.jpg)
