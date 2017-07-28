@@ -29,6 +29,8 @@ The above was conceptualized during the planning stage. As of now, users can:
 
 * 'Like' and 'follow' buttons on the questions to generate top or followed qns for specific users
 
+* Flash messages upon wrong passwords or taken up usernames/ emails
+
 
 
 
