@@ -31,7 +31,8 @@ The above was conceptualized during the planning stage. As of now, users can:
 
 * Flash messages upon wrong passwords or taken up usernames/ emails
 
-
+Unfortunately...
+![pmt](project_management_triangle.jpg)
 
 
 
